@@ -1,5 +1,6 @@
 import numpy as np
 
+# function to read the "G-code" file and create way-points
 def get_waypoints(file_name):
     temp_x_y = []
     waypoints = []
@@ -11,6 +12,7 @@ def get_waypoints(file_name):
     with open(file_name, 'r') as f_gcode:
         for line in f_gcode:
             if 'G1' in line and ';' not in line:
+                # find the lines to get the Z-coordinate or height of print
                 if 'Z' in line:
                     if z_found_num != 0:
                         z_found = True
@@ -21,6 +23,7 @@ def get_waypoints(file_name):
                     z_index_end = line.find(' ', z_index_start)
                     z_value = float(line[z_index_start:z_index_end])
                 else:
+                    # find the X-Y coordinates for printing
                     z_found = False
                     if 'X' and 'Y' in line:
                         x_index_start = line.find('X') + 1
@@ -31,6 +34,7 @@ def get_waypoints(file_name):
                         y_value = float(line[y_index_start:y_index_end])
                         temp_x_y.append([x_value, y_value])
             if z_found:
+                # append the way-point array with newer Z-values and its corresponding X-Y coordinates
                 waypoints.append([z_value_prev, temp_x_y])
                 temp_x_y = []
     waypoints.append([z_value, temp_x_y])
@@ -40,4 +44,3 @@ def get_waypoints(file_name):
 if __name__ == "__main__":
     filename = 'Base side 1 rev3.gcode'
     w_points = get_waypoints(filename)
-    print w_points

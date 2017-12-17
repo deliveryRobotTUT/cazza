@@ -6,3 +6,4 @@ This package was developed to include the support files for defining the robot i
 This package was developed using ROS-moveit package and including the URDF files developed above.
 * my_abb_irb6650s_moveit_config:
 As the name suggest this package contains the code for controlling the robot using "Python".
+Please find the video link:https://www.youtube.com/watch?v=OwALl9o2E0k&t=208s

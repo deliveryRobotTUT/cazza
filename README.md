@@ -8,3 +8,4 @@ This package was developed using ROS-moveit package and including the URDF files
 As the name suggest this package contains the code for controlling the robot using "Python".
 
 Please find the video link:https://www.youtube.com/watch?v=OwALl9o2E0k&t=208s
+Please find the report for details.
